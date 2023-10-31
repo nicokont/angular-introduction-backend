@@ -11,26 +11,26 @@ export class UserService {
   // find methods
 
   async findAllUsers(): Promise<User[]> {
-    return await this.userModel.find().exec()
+    return await this.userModel.find().exec();
   }
 
   async findUserById(id: number): Promise<User> {
-    return await this.userModel.findOne({id}).exec()
+    return await this.userModel.findOne({ id }).exec();
   }
 
   async findUserByEmail(email: string): Promise<User> {
-    return await this.userModel.findOne({email}).exec()
+    return await this.userModel.findOne({ email }).exec();
   }
 
-  // get methods
+  // create methods
 
   async createUser(user: UserDto): Promise<User> {
-    const newUser = new this.userModel(user)
-    return await newUser.save()
+    const newUser = new this.userModel(user);
+    return await newUser.save();
   }
 
   async createUsers(users: UserDto[]): Promise<User[]> {
-    const newUsers = users.map((user)=> new this.userModel(user))
-    return await this.userModel.insertMany(newUsers)
+    const newUsers = users.map((user) => new this.userModel(user));
+    return await this.userModel.insertMany(newUsers);
   }
 }
